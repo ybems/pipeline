@@ -10,7 +10,7 @@ phases:
   pre_build:
     commands:
       - echo "Installing dependencies - `pwd`"
-      - cd app && npm install
+      - cd hello-world && npm install
       - echo "dependencies install completed `date`"
   build:
     commands:
@@ -19,7 +19,7 @@ phases:
       - sam package --output-template-file package.yml --s3-bucket $SAM_ARTIFACTS_BUCKET_NAME
   post_build:
     commands:
-      - cd app && npm run test
+      - cd hello-world && npm run test
       - echo "build completed on `date`"
 artifacts:
   files:
