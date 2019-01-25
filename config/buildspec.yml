@@ -1,0 +1,29 @@
+version: 0.2
+
+env:
+  parameter-store:
+    SAM_ARTIFACTS_BUCKET_NAME: 'samArtifactsBucketName'
+phases:
+  install:
+    commands:
+      - echo "nothing to do in install"
+  pre_build:
+    commands:
+      - echo "Installing dependencies - `pwd`"
+      - cd app && npm install
+      - echo "dependencies install completed `date`"
+  build:
+    commands:
+      - echo "Starting build `date` in `pwd`"
+      - sam build
+      - sam package --output-template-file package.yml --s3-bucket $SAM_ARTIFACTS_BUCKET_NAME
+  post_build:
+    commands:
+      - cd app && npm run test
+      - echo "build completed on `date`"
+artifacts:
+  files:
+    - app/**/*
+    - package.yaml
+  name: sam-policy-app-build
+  discard-paths: yes
