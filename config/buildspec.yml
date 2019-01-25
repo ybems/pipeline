@@ -24,6 +24,6 @@ phases:
       - echo "build completed on `date`"
 artifacts:
   files:
-    - package.yaml
+    - package.yml
   name: sam-policy-app-build
   discard-paths: yes
