@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   parameter-store:
-    SAM_ARTIFACTS_BUCKET_NAME: 'samArtifactsBucketName'
+    SAM_ARTIFACTS_BUCKET_NAME: 'SAM_ARTIFACTS_BUCKET_NAME'
 phases:
   install:
     commands:
