@@ -5,11 +5,9 @@ env:
     SAM_ARTIFACTS_BUCKET_NAME: 'SAM_ARTIFACTS_BUCKET_NAME'
 phases:
   install:
-    run-as: root
     commands:
       - pip install --user aws-sam-cli
       - export PATH=$PATH:$USER_BASE_PATH/bin
-      - exec "$SHELL"
   pre_build:
     commands:
       - echo "Installing dependencies - `pwd`"
