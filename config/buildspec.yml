@@ -15,8 +15,8 @@ phases:
   build:
     commands:
       - echo "Starting build `date` in `pwd`"
-      - /usr/bin/sam build
-      - /usr/bin/sam package --output-template-file package.yml --s3-bucket $SAM_ARTIFACTS_BUCKET_NAME
+      - /usr/local/bin/sam build
+      - /usr/local/bin/sam package --output-template-file package.yml --s3-bucket $SAM_ARTIFACTS_BUCKET_NAME
   post_build:
     commands:
       - cd hello-world && npm run test
