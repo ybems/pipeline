@@ -6,7 +6,7 @@ env:
 phases:
   install:
     commands:
-      - echo "nothing to do in install"
+      - pip install --user aws-sam-cli
   pre_build:
     commands:
       - echo "Installing dependencies - `pwd`"
