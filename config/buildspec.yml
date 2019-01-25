@@ -6,8 +6,8 @@ env:
 phases:
   install:
     commands:
-      - pip install awscli --user --upgrade
-      - pip install --user aws-sam-cli
+      - pip install --user aws-sam-cli --upgrade
+      - pip install botocore==1.10.82
       - python -m site --user-base
   pre_build:
     commands:
