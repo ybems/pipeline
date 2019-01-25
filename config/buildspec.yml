@@ -7,7 +7,6 @@ phases:
   install:
     commands:
       - pip install --user aws-sam-cli
-      - export PATH=$PATH:$USER_BASE_PATH/bin
   pre_build:
     commands:
       - echo "Installing dependencies - `pwd`"
@@ -16,15 +15,14 @@ phases:
   build:
     commands:
       - echo "Starting build `date` in `pwd`"
-      - sam build
-      - sam package --output-template-file package.yml --s3-bucket $SAM_ARTIFACTS_BUCKET_NAME
+      - $USER_BASE_PATH/bin/sam build
+      - $USER_BASE_PATH/bin/sam package --output-template-file package.yml --s3-bucket $SAM_ARTIFACTS_BUCKET_NAME
   post_build:
     commands:
       - cd hello-world && npm run test
       - echo "build completed on `date`"
 artifacts:
   files:
-    - app/**/*
     - package.yaml
   name: sam-policy-app-build
   discard-paths: yes
