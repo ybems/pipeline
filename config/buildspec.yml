@@ -23,7 +23,8 @@ phases:
     commands:
       - (cd hello-world && npm run test)
       - echo "build completed on `date`"
-      - echo $CODEBUILD_SRC_DIR 
+      - echo $CODEBUILD_SRC_DIR
+      - ls $CODEBUILD_SRC_DIR 
 artifacts:
   files:
     - package.yml
