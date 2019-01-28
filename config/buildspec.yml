@@ -21,8 +21,9 @@ phases:
       - /root/.local/bin/sam package --output-template-file package.yml --s3-bucket $SAM_ARTIFACTS_BUCKET_NAME
   post_build:
     commands:
-      - cd hello-world && npm run test
+      - (cd hello-world && npm run test)
       - echo "build completed on `date`"
+      - echo $CODEBUILD_SRC_DIR 
 artifacts:
   files:
     - package.yml
